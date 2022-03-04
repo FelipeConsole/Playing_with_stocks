@@ -1,10 +1,7 @@
-### A Pluto.jl notebook ###
-# v0.17.7
 
 using Markdown
 using InteractiveUtils
 
-# This Pluto notebook uses @bind for interactivity. When running this notebook outside of Pluto, the following 'mock version' of @bind gives bound variables a default value (instead of an error).
 macro bind(def, element)
     quote
         local iv = try Base.loaded_modules[Base.PkgId(Base.UUID("6e696c72-6542-2067-7265-42206c756150"), "AbstractPlutoDingetjes")].Bonds.initial_value catch; b -> missing; end
@@ -14,10 +11,10 @@ macro bind(def, element)
     end
 end
 
-# ╔═╡ d5de4632-1cb4-11ec-0f71-211bc21903b7
+
 using PlutoUI, Plots, PyCall, Colors, Distributions
 
-# ╔═╡ 949f8915-0c07-4192-9b2a-2a0e711df057
+
 begin
 	acoes = ["MGLU3.SA","AZUL4.SA"] |> sort
 
@@ -27,7 +24,7 @@ begin
 	data=reshape(data,size(data, 1), :)
 end
 
-# ╔═╡ ba4b6c5f-b64b-4713-b9ef-dd539df5d337
+
 begin
 	colors = Colors.distinguishable_colors(length(acoes), [RGB(1,1,1), RGB(0,0,0)], dropseed=true)
 	colors=reshape(colors, 1, :)
@@ -35,24 +32,22 @@ begin
 	plt_args = (:leg => :topleft, :lab => labels, :c => colors)
 end
 
-# ╔═╡ f03c9391-ee1e-454c-894a-086974e4c366
+
 plot(data;plt_args... )
 
-# ╔═╡ 5db5e4e3-e705-4afc-b430-26dd2ebfdd9f
+
 retornos = (data[2:end,:] - data[1:end-1,:])./data[1:end-1,:]
 
-# ╔═╡ 52dfd2ee-b177-4732-b8c8-39626957b1fe
+
 plot(retornos;plt_args...)
 
-# ╔═╡ 37904f55-6197-4995-a6c1-bf20faaa5248
 
 
-# ╔═╡ cf5f6a52-f931-48ae-b4d3-5186d9efd3bc
 md"""
 parace? distribuição normla?
 """
 
-# ╔═╡ 8f56c1cd-802d-4d01-95c5-3335dc129737
+
 begin
 	μM = reshape(mean(retornos, dims=1),:,1 )
 	σM = cov(retornos)
@@ -65,17 +60,18 @@ begin
 	  
 end
 
-# ╔═╡ d2dba16f-642e-4350-9159-eca0b2d48e05
+
 md"""
 combinação linear de ações  e minimizar o 'risco'
 """
 
-# ╔═╡ 2636a0bf-ed26-46d0-a7bf-d80ebc0a4c16
+
 md"""
 x₁	= $(@bind x₁ Slider(0:0.05:1,show_value=true))
 """
 
-# ╔═╡ 42646a1b-3025-4b5d-945f-627cde77160c
+x₁ = 0:0.05:1
+
 begin
 	using LinearAlgebra
 	x = [x₁]
