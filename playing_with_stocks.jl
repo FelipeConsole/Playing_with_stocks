@@ -5,15 +5,17 @@ Análise ingênua de algumas ações listadas na B3.
 Montamos a carteira selecionando algumas ações e consideramos um período fixo (digamos, 1 ano).
 Criamos o retorno simples dessa carteira, baseado na variação de um dia pro outro do valor de fechamento.
 Por fim, visualisamos a combinação que miniza o risco da carteira.
+
+As aulas do prof. Abel Siqueira foram de grande utilidade! 
 ```
 # pacotes necessários
 using  Plots, PyCall, Colors, Distributions
 
-# pegando algumas as ações de interesse
+# pegando algumas as ações de interesse e ordenando-as em ordem alfabética
 acoes = ["MGLU3.SA","AZUL4.SA", "PETR4.SA"] |> sort
 
 # Usando os pacotes yfinance e pandas do Python,
-# pra isso precisamos chamar o Python com o pkg Pycall, usando a função pyimport.  
+# pra isso precisamos chamar o Python com o pkg PyCall, usando a função pyimport.  
 pd=pyimport("pandas")
 yf=pyimport("yfinance")
 
@@ -23,7 +25,7 @@ data=reshape(data,size(data, 1), :)
 
 
 
-# Para melhor visualizar, vamos usar o pacote de cores colors
+# Para melhor visualizar, vamos usar o pacote de cores "colors"
 # e preparar alguns argumentos para plotar
 colors = Colors.distinguishable_colors(length(acoes), [RGB(1,1,1), RGB(0,0,0)], dropseed=true)
 colors=reshape(colors, 1, :)
