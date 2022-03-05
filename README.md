@@ -1,4 +1,4 @@
-# Julia Lang
+# Playing with stocks in Julia Lang
 
 Análise ingênua de algumas ações listadas na B3 usando Julia.
 
