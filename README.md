@@ -1,6 +1,6 @@
 # Playing with stocks in Julia Lang
 
-Análise ingênua de algumas ações listadas na B3 usando Julia, baseado na aula  [aula](https://www.youtube.com/watch?v=tJlQPuYgv3Q&ab_channel=AbelSiqueira) do prof. Abel Siqueira
+Análise ingênua de algumas ações listadas na B3 usando Julia, baseado nas aulas  [aula](https://www.youtube.com/watch?v=tJlQPuYgv3Q&ab_channel=AbelSiqueira) do prof. Abel Siqueira
 
 Montamos a carteira selecionando algumas ações e consideramos um período fixo (digamos, 1 ano).
 Criamos o retorno simples dessa carteira, baseado na variação de um dia pro outro do valor de fechamento.
